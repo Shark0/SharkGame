@@ -1,0 +1,17 @@
+syntax = "proto3";
+package com.shark.game.service;
+
+message LoginRequest {
+  string playerName = 1;
+}
+
+message LoginResponse {
+  int32 status = 1;
+  string token = 2;
+  string name = 3;
+  int64 money = 4;
+}
+
+service LoginService {
+  rpc start(LoginRequest) returns (LoginResponse);
+}

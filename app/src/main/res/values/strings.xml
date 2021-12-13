@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SharkGame</string>
+    <string name="server_url">192.168.0.114:8080</string>
+</resources>

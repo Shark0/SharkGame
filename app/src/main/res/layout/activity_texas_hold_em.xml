@@ -1,0 +1,1433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#018786"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".activity.TexasHoldEmActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位1" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位2" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位3" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位4" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位5" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位6" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/operation_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/activityTexasHoldEm_roomGameBetTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="公牌:" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+
+        <TextView
+            android:id="@+id/activityTexasHoldEm_publicCardTextView0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="牌1" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+
+        <TextView
+            android:id="@+id/activityTexasHoldEm_publicCardTextView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="牌2" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+
+        <TextView
+            android:id="@+id/activityTexasHoldEm_publicCardTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="牌3" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+
+        <TextView
+            android:id="@+id/activityTexasHoldEm_publicCardTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="牌4" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+
+        <TextView
+            android:id="@+id/activityTexasHoldEm_publicCardTextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="牌5" />
+
+        <Space
+            android:layout_width="4dp"
+            android:layout_height="4dp" />
+
+        <LinearLayout
+            android:id="@+id/activityTexasHoldEm_operationLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/activityTexasHoldEm_foldButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="蓋牌" />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="4dp" />
+
+            <Button
+                android:id="@+id/activityTexasHoldEm_callButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="跟注" />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="4dp" />
+
+            <Button
+                android:id="@+id/activityTexasHoldEm_raiseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加注" />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="4dp" />
+
+            <SeekBar
+                android:id="@+id/activityTexasHoldEm_raiseMoneySeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:min="100"
+                android:progress="100"
+                android:max="20000"/>
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_raiseMoneyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="4dp" />
+
+            <Button
+                android:id="@+id/activityTexasHoldEm_standUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="起立" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/activityTexasHoldEm_sitDownButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="坐下" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位7" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位8" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位9" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位10" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位11" />
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="8dp"
+            android:layout_height="8dp" />
+
+        <RelativeLayout
+            android:id="@+id/activityTexasHoldEm_seatLayout11"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/seat_bg">
+
+            <LinearLayout
+                android:id="@+id/activityTexasHoldEm_seatInfoLayout11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatNameTextView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard1TextView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCard2TextView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatCardTypeTextView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatMoneyTextView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatBetMoneyTextView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/activityTexasHoldEm_seatOperationTextView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/activityTexasHoldEm_seatProgressLayout11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activityTexasHoldEm_seatOperationSecondTextView11"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="8dp" />
+
+                    <ProgressBar
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:indeterminate="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activityTexasHoldEm_seatEmptyTextView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="空位12" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

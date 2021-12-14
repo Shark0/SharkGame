@@ -1,5 +1,5 @@
 # Read Me
-德州撲克的範例城市
+德州撲克的範例
 
 ## 啟動專案
 * 請下載Game Server https://github.com/Shark0/GrpcGameServer

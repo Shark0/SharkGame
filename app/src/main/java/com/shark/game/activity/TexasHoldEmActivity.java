@@ -117,7 +117,7 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
         bindFoldButton();
         bindCallButton();
         bindRaiseButton();
-        bindRaiseSeekBar();
+        bindBetRaiseSeekBar();
         bindStandUpButton();
         bindSitDownButton();
     }
@@ -322,11 +322,21 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
         findViewById(R.id.activityTexasHoldEm_raiseButton).setOnClickListener(this);
     }
 
-    private void bindRaiseSeekBar() {
-        SeekBar seekBar = findViewById(R.id.activityTexasHoldEm_raiseMoneySeekBar);
+    private void bindBetRaiseSeekBar() {
+        SeekBar seekBar = findViewById(R.id.activityTexasHoldEm_raiseBetSeekBar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Object minRaiseBetObject = seekBar.getTag();
+                int minRaiseBet;
+                if(minRaiseBetObject != null) {
+                    minRaiseBet = (Integer) minRaiseBetObject;
+                    if(minRaiseBet > progress) {
+                        progress = minRaiseBet;
+                        seekBar.setProgress(progress);
+                    }
+                }
+
                 TextView raiseMoneyTextView = findViewById(R.id.activityTexasHoldEm_raiseMoneyTextView);
                 raiseMoneyTextView.setText(String.valueOf(progress));
             }
@@ -416,7 +426,7 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
         Button callButton = findViewById(R.id.activityTexasHoldEm_callButton);
         callButton.setText("跟注");
 
-        SeekBar raiseSeekBar = findViewById(R.id.activityTexasHoldEm_raiseMoneySeekBar);
+        SeekBar raiseSeekBar = findViewById(R.id.activityTexasHoldEm_raiseBetSeekBar);
         long raiseMoney = raiseSeekBar.getProgress();
         TexasHoldemOperationServiceGrpc.TexasHoldemOperationServiceBlockingStub stub =
                 TexasHoldemOperationServiceGrpc.newBlockingStub(ChannelManager.getInstance(getString(R.string.server_url)).getChannel());
@@ -627,12 +637,15 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void changeStatus(int roomStatus) {
-        switch (roomStatus) {
-            case ROOM_STATUS_WAITING:
-                for(int seatId = 0; seatId < 12; seatId ++) {
+        for(int seatId = 0; seatId < 12; seatId ++) {
+            switch (roomStatus) {
+                case ROOM_STATUS_WAITING:
                     seatLayoutMap.get(seatId).setBackgroundResource((this.sitDownSeatId == seatId) ? R.drawable.sitdown_seat_bg: R.drawable.seat_bg);
-                }
-                break;
+                    break;
+                default:
+                    seatBetMoneyTextViewMap.get(seatId).setText("押注: 0");
+                    break;
+            }
         }
     }
 
@@ -713,14 +726,14 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
             }
 
             View raiseButton = findViewById(R.id.activityTexasHoldEm_raiseButton);
-            SeekBar raiseMoneySeekBar = findViewById(R.id.activityTexasHoldEm_raiseMoneySeekBar);
+            SeekBar raiseMoneySeekBar = findViewById(R.id.activityTexasHoldEm_raiseBetSeekBar);
             TextView raiseMoneyTextView = findViewById(R.id.activityTexasHoldEm_raiseMoneyTextView);
             if (startOperationResponseDO.isCanRaise()) {
                 raiseButton.setClickable(true);
                 int minRaiseBet = Long.valueOf(startOperationResponseDO.getMinRaiseBet()).intValue();
-                raiseMoneySeekBar.setMin(minRaiseBet);
-                raiseMoneySeekBar.setProgress(minRaiseBet);
                 raiseMoneySeekBar.setMax(Long.valueOf(startOperationResponseDO.getMaxRaiseBet()).intValue());
+                raiseMoneySeekBar.setTag(minRaiseBet);
+                raiseMoneySeekBar.setProgress(minRaiseBet);
                 raiseMoneySeekBar.setVisibility(View.VISIBLE);
                 raiseMoneyTextView.setVisibility(View.VISIBLE);
             } else {
@@ -744,7 +757,8 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
         seatOperationTextViewMap.get(operationSeatId).setText(generateOperationText(seatOperationResponseDO.getOperation()));
 
         if(seatOperationResponseDO.getOperation() == OPERATION_CALL || seatOperationResponseDO.getOperation() == OPERATION_RAISE) {
-            seatBetMoneyTextViewMap.get(operationSeatId).setText("押注: " + seatOperationResponseDO);
+            seatMoneyTextViewMap.get(operationSeatId).setText("籌碼: " + seatOperationResponseDO.getMoney());
+            seatBetMoneyTextViewMap.get(operationSeatId).setText("押注: " + seatOperationResponseDO.getBet());
         }
 
         TextView roomGameBetTextView = findViewById(R.id.activityTexasHoldEm_roomGameBetTextView);
@@ -792,15 +806,15 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
 
     private String generateCardColorText(int card) {
         int color = card / 13;
-        return List.of("♣", "♦", "♥", "♠").get(color);
+        return new String[]{"♣", "♦", "♥", "♠"}[color];
     }
 
     private String generateCardNumberText(int card) {
         int number = card % 13;
-        return List.of("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A").get(number);
+        return new String[]{"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"}[number];
     }
 
     private String generateCardTypeText(int cardType) {
-        return List.of("高牌", "一對", "二對", "三張", "順子", "同花", "葫蘆", "鐵支", "同花順", "皇家").get(cardType);
+        return new String[]{"高牌", "一對", "二對", "三張", "順子", "同花", "葫蘆", "鐵支", "同花順", "皇家"}[cardType];
     }
 }

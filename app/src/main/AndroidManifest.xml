@@ -15,6 +15,7 @@
         android:theme="@style/Theme.SharkGame">
         <activity
             android:name=".activity.MainActivity"
+            android:exported="true"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape">
             <intent-filter>

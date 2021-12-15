@@ -761,7 +761,7 @@
                 android:layout_height="4dp" />
 
             <SeekBar
-                android:id="@+id/activityTexasHoldEm_raiseMoneySeekBar"
+                android:id="@+id/activityTexasHoldEm_raiseBetSeekBar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

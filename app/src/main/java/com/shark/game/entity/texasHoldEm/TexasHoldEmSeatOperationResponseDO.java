@@ -8,5 +8,5 @@ public class TexasHoldEmSeatOperationResponseDO {
     private int operation;
     private long money;
     private long bet;
-    private long roomGameBet;
+    private long sceneGameBet;
 }

@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.shark.game.R;
-import com.shark.game.entity.seat.SeatDO;
 import com.shark.game.entity.texasHoldEm.TexasHoldEmHandCardResponseDO;
-import com.shark.game.entity.texasHoldEm.TexasHoldEmRoomInfoResponseDO;
+import com.shark.game.entity.texasHoldEm.TexasHoldEmSceneInfoResponseDO;
+import com.shark.game.entity.texasHoldEm.TexasHoldEmSeatInfoResponseDO;
 import com.shark.game.entity.texasHoldEm.TexasHoldEmSeatOperationResponseDO;
 import com.shark.game.entity.texasHoldEm.TexasHoldEmStartOperationResponseDO;
 import com.shark.game.entity.texasHoldEm.TexasHoldEmWaitOperationResponseDO;
@@ -40,14 +40,14 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
     private final int ROOM_STATUS_WAITING = 0, ROOM_STATUS_PRE_FLOP = 1, ROOM_STATUS_FLOP = 2, ROOM_STATUS_TURN = 3, ROOM_STATUS_RIVER = 4,
             ROOM_STATUS_OPEN_CARD = 5, ROOM_STATUS_ALLOCATE_POT = 6;
 
-    private final int OPERATION_EXIT = 0, OPERATION_CALL = 1, OPERATION_RAISE = 2, OPERATION_ALL_IN = 3,
-            OPERATION_FOLD = 4, OPERATION_STAN_UP = 5, OPERATION_SIT_DOWN = 6;
+    public static final int OPERATION_NONE = -1, OPERATION_EXIT = 0, OPERATION_CALL = 1, OPERATION_RAISE = 2, OPERATION_ALL_IN = 3,
+            OPERATION_FOLD = 4, OPERATION_STAND_UP = 5, OPERATION_SIT_DOWN = 6;
 
-    public static final int RESPONSE_STATUS_SIT_DOWN = 0, RESPONSE_STATUS_NO_SEAT = 1, RESPONSE_STATUS_SEAT_INFO = 2,
-            RESPONSE_STATUS_ENTER_ROOM_INFO = 3, RESPONSE_STATUS_ROOM_INFO = 4, RESPONSE_STATUS_CHECK_SEAT_LIVE = 5,
-            RESPONSE_STATUS_CHANGE_STATUS = 6, RESPONSE_STATUS_SEAT_CARD = 7, RESPONSE_STATUS_START_OPERATION = 8,
-            RESPONSE_STATUS_WAIT_SEAT_OPERATION = 9, RESPONSE_STATUS_SEAT_OPERATION = 10, RESPONSE_STATUS_PUBLIC_CARD = 11,
-            RESPONSE_STATUS_WIN_POT_BET = 12;
+    public static final int RESPONSE_STATUS_SIT_DOWN = 0, RESPONSE_STATUS_STAND_UP = 1, RESPONSE_STATUS_NO_SEAT = 2,
+            RESPONSE_STATUS_SEAT_INFO = 3, RESPONSE_STATUS_ENTER_SCENE_INFO = 4, RESPONSE_STATUS_SCENE_INFO = 5,
+            RESPONSE_STATUS_CHECK_LIVE = 6, RESPONSE_STATUS_STATUS_CHANGED = 7, RESPONSE_STATUS_SEAT_CARD = 8,
+            RESPONSE_STATUS_SEAT_START_ACTION = 9, RESPONSE_STATUS_WAIT_SEAT_ACTION = 10, RESPONSE_STATUS_SEAT_ACTION = 11,
+            RESPONSE_STATUS_PUBLIC_CARD = 12, RESPONSE_STATUS_WIN_POT_BET = 13;
 
     public static String INTENT_TOKEN = "INTENT_TOKEN";
 
@@ -61,18 +61,18 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
     private final Map<Integer, TextView> seatCardTypeTextViewMap = new HashMap<>();
     private final Map<Integer, TextView> seatMoneyTextViewMap = new HashMap<>();
     private final Map<Integer, TextView> seatBetMoneyTextViewMap = new HashMap<>();
-    private final Map<Integer, TextView> seatOperationTextViewMap = new HashMap<>();
+    private final Map<Integer, TextView> seatActionTextViewMap = new HashMap<>();
     private final Map<Integer, View> seatEmptyTextViewMap = new HashMap<>();
     private final Map<Integer, View> seatProgressLayoutMap = new HashMap<>();
     private final Map<Integer, TextView> seatOperationSecondTextViewMap = new HashMap<>();
     private final Map<Integer, TextView> publicCardTextViewMap = new HashMap<>();
 
     private final List<Integer> publicCardList = new ArrayList<>();
-    private final Map<Integer, SeatDO> seatIdSeatMap = new HashMap<>();
+    private final Map<Integer, TexasHoldEmSeatInfoResponseDO> seatIdSeatMap = new HashMap<>();
     private final Map<Integer, TexasHoldEmHandCardResponseDO> seatIdHandCardMap = new HashMap<>();
     private int sitDownSeatId = -1;
     private int smallBlindSeatId;
-    private int roomStatus;
+    private int sceneStatus;
     private int bigBlindSeatId;
     private int currentOperationSeatId;
     private long callBet;
@@ -243,18 +243,18 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void bindAllSeatOperationTextView() {
-        seatOperationTextViewMap.put(0, findViewById(R.id.activityTexasHoldEm_seatOperationTextView0));
-        seatOperationTextViewMap.put(1, findViewById(R.id.activityTexasHoldEm_seatOperationTextView1));
-        seatOperationTextViewMap.put(2, findViewById(R.id.activityTexasHoldEm_seatOperationTextView2));
-        seatOperationTextViewMap.put(3, findViewById(R.id.activityTexasHoldEm_seatOperationTextView3));
-        seatOperationTextViewMap.put(4, findViewById(R.id.activityTexasHoldEm_seatOperationTextView4));
-        seatOperationTextViewMap.put(5, findViewById(R.id.activityTexasHoldEm_seatOperationTextView5));
-        seatOperationTextViewMap.put(6, findViewById(R.id.activityTexasHoldEm_seatOperationTextView6));
-        seatOperationTextViewMap.put(7, findViewById(R.id.activityTexasHoldEm_seatOperationTextView7));
-        seatOperationTextViewMap.put(8, findViewById(R.id.activityTexasHoldEm_seatOperationTextView8));
-        seatOperationTextViewMap.put(9, findViewById(R.id.activityTexasHoldEm_seatOperationTextView9));
-        seatOperationTextViewMap.put(10, findViewById(R.id.activityTexasHoldEm_seatOperationTextView10));
-        seatOperationTextViewMap.put(11, findViewById(R.id.activityTexasHoldEm_seatOperationTextView11));
+        seatActionTextViewMap.put(0, findViewById(R.id.activityTexasHoldEm_seatOperationTextView0));
+        seatActionTextViewMap.put(1, findViewById(R.id.activityTexasHoldEm_seatOperationTextView1));
+        seatActionTextViewMap.put(2, findViewById(R.id.activityTexasHoldEm_seatOperationTextView2));
+        seatActionTextViewMap.put(3, findViewById(R.id.activityTexasHoldEm_seatOperationTextView3));
+        seatActionTextViewMap.put(4, findViewById(R.id.activityTexasHoldEm_seatOperationTextView4));
+        seatActionTextViewMap.put(5, findViewById(R.id.activityTexasHoldEm_seatOperationTextView5));
+        seatActionTextViewMap.put(6, findViewById(R.id.activityTexasHoldEm_seatOperationTextView6));
+        seatActionTextViewMap.put(7, findViewById(R.id.activityTexasHoldEm_seatOperationTextView7));
+        seatActionTextViewMap.put(8, findViewById(R.id.activityTexasHoldEm_seatOperationTextView8));
+        seatActionTextViewMap.put(9, findViewById(R.id.activityTexasHoldEm_seatOperationTextView9));
+        seatActionTextViewMap.put(10, findViewById(R.id.activityTexasHoldEm_seatOperationTextView10));
+        seatActionTextViewMap.put(11, findViewById(R.id.activityTexasHoldEm_seatOperationTextView11));
     }
 
     private void bindAllSeatProgressLayout() {
@@ -451,14 +451,10 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
         TexasHoldemGameService.TexasHoldemGameOperationRequest request =
                 TexasHoldemGameService.TexasHoldemGameOperationRequest.newBuilder()
                         .setToken(token)
-                        .setOperation(OPERATION_STAN_UP)
+                        .setOperation(OPERATION_STAND_UP)
                         .setBet(0)
                         .build();
         stub.sendTexasHoldemGameOperation(request);
-        seatLayoutMap.get(sitDownSeatId).setBackgroundResource(R.drawable.seat_bg);
-        sitDownSeatId = -1;
-        findViewById(R.id.activityTexasHoldEm_operationLayout).setVisibility(View.GONE);
-        findViewById(R.id.activityTexasHoldEm_sitDownButton).setVisibility(View.VISIBLE);
     }
 
     private void onSitDownButtonClick() {
@@ -489,48 +485,48 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
                         case RESPONSE_STATUS_SIT_DOWN:
                             sitDown(Integer.valueOf(message));
                             break;
+                        case RESPONSE_STATUS_STAND_UP:
+                            standUp();
+                            break;
                         case RESPONSE_STATUS_NO_SEAT:
                             showNoSeatToast();
                             break;
-                        case RESPONSE_STATUS_ENTER_ROOM_INFO:
-                            TexasHoldEmRoomInfoResponseDO enterRoomInfo = new Gson().fromJson(message, TexasHoldEmRoomInfoResponseDO.class);
-                            layoutRoomInfo(enterRoomInfo);
-                            showEnterRoomToast(enterRoomInfo.getRoomStatus());
+                        case RESPONSE_STATUS_ENTER_SCENE_INFO:
+                            showEnterRoomToast(Integer.valueOf(message));
                             break;
                         case RESPONSE_STATUS_SEAT_INFO:
-                            SeatDO seatDO = new Gson().fromJson(message, SeatDO.class);
+                            TexasHoldEmSeatInfoResponseDO seatDO = new Gson().fromJson(message, TexasHoldEmSeatInfoResponseDO.class);
                             layoutSeatInfo(seatDO.getId(), seatDO);
                             break;
-                        case RESPONSE_STATUS_ROOM_INFO:
-                            Log.i("TexasHoldEmActivity", "registerStatusResponse(): message = " + message);
-                            layoutRoomInfo(new Gson().fromJson(message, TexasHoldEmRoomInfoResponseDO.class));
+                        case RESPONSE_STATUS_SCENE_INFO:
+                            layoutRoomInfo(new Gson().fromJson(message, TexasHoldEmSceneInfoResponseDO.class));
                             break;
-                        case RESPONSE_STATUS_CHANGE_STATUS:
-                            TexasHoldEmActivity.this.roomStatus = Integer.valueOf(message);
+                        case RESPONSE_STATUS_STATUS_CHANGED:
+                            TexasHoldEmActivity.this.sceneStatus = Integer.valueOf(message);
                             invisibleAllSeatProgressLayout();
-                            changeStatus(TexasHoldEmActivity.this.roomStatus);
-                            Toast.makeText(TexasHoldEmActivity.this, generateRoomStatusText(roomStatus), Toast.LENGTH_SHORT).show();
+                            changeStatus(TexasHoldEmActivity.this.sceneStatus);
+                            Toast.makeText(TexasHoldEmActivity.this, generateRoomStatusText(sceneStatus), Toast.LENGTH_SHORT).show();
                             break;
                         case RESPONSE_STATUS_SEAT_CARD:
                             TexasHoldEmActivity.this.seatIdHandCardMap.clear();
                             TexasHoldEmActivity.this.seatIdHandCardMap.putAll(new Gson().fromJson(message, new TypeToken<Map<Integer, TexasHoldEmHandCardResponseDO>>() {}.getType()));
                             layoutAllSeatCard();
                             break;
-                        case RESPONSE_STATUS_START_OPERATION:
-                            startOperation(new Gson().fromJson(message, TexasHoldEmStartOperationResponseDO.class));
+                        case RESPONSE_STATUS_SEAT_START_ACTION:
+                            startAction(new Gson().fromJson(message, TexasHoldEmStartOperationResponseDO.class));
                             break;
-                        case RESPONSE_STATUS_WAIT_SEAT_OPERATION:
-                            layoutWaitSeatOperation(new Gson().fromJson(message, TexasHoldEmWaitOperationResponseDO.class));
+                        case RESPONSE_STATUS_WAIT_SEAT_ACTION:
+                            layoutWaitSeatAction(new Gson().fromJson(message, TexasHoldEmWaitOperationResponseDO.class));
                             break;
-                        case RESPONSE_STATUS_SEAT_OPERATION:
-                            layoutSeatOperation(new Gson().fromJson(message, TexasHoldEmSeatOperationResponseDO.class));
+                        case RESPONSE_STATUS_SEAT_ACTION:
+                            layoutSeatAction(new Gson().fromJson(message, TexasHoldEmSeatOperationResponseDO.class));
                             break;
                         case RESPONSE_STATUS_PUBLIC_CARD:
                             publicCardList.addAll(new Gson().fromJson(message, new TypeToken<List<Integer>>(){}.getType()));
                             layoutPublicCardList();
                             break;
                         case RESPONSE_STATUS_WIN_POT_BET:
-                            displayWinPotBet(new Gson().fromJson(message, new TypeToken<List<TexasHoldEmWinPotBetResponseDO>>(){}.getType()), 0);
+                            displayWinPotBet(new Gson().fromJson(message, new TypeToken<List<TexasHoldEmWinPotBetResponseDO>>(){}.getType()));
                             break;
 
                     }
@@ -552,10 +548,16 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
         findViewById(R.id.activityTexasHoldEm_sitDownButton).setVisibility(View.GONE);
     }
 
+    private void standUp() {
+        seatLayoutMap.get(sitDownSeatId).setBackgroundResource(R.drawable.seat_bg);
+        sitDownSeatId = -1;
+        findViewById(R.id.activityTexasHoldEm_operationLayout).setVisibility(View.GONE);
+        findViewById(R.id.activityTexasHoldEm_sitDownButton).setVisibility(View.VISIBLE);
+    }
+
     private void showNoSeatToast() {
         Toast.makeText(this, "目前沒有座位，請先觀看其他人遊戲操作，等有座位時再坐下", Toast.LENGTH_SHORT).show();
     }
-
 
     private void showEnterRoomToast(int roomStatus) {
         String message;
@@ -571,7 +573,7 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    private void layoutSeatInfo(int seatId, SeatDO seatDO) {
+    private void layoutSeatInfo(int seatId, TexasHoldEmSeatInfoResponseDO seatDO) {
         if (seatDO == null) {
             seatInfoLayoutMap.get(seatId).setVisibility(View.INVISIBLE);
             seatEmptyTextViewMap.get(seatId).setVisibility(View.VISIBLE);
@@ -584,7 +586,7 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
             } else if (seatId == bigBlindSeatId) {
                 seatNameTextViewMap.get(seatId).setText("大盲");
             } else {
-                seatNameTextViewMap.get(seatId).setText(seatDO.getPlayerName());
+                seatNameTextViewMap.get(seatId).setText(seatDO.getName());
             }
 
             if(seatDO.getStatus() == SEAT_STATUS_WAITING || seatDO.getId() != seatId) {
@@ -597,34 +599,34 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
             seatBetMoneyTextViewMap.get(seatId).setText("押注: " + seatDO.getRoundBet());
 
             if (seatDO.getStatus() == SEAT_STATUS_WAITING) {
-                seatOperationTextViewMap.get(seatId).setText("等下局");
+                seatActionTextViewMap.get(seatId).setText("等下局");
             } else if (seatDO.getStatus() == SEAT_STATUS_GAMING) {
-                int operation = seatDO.getOperation();
-                seatOperationTextViewMap.get(seatId).setText(generateOperationText(operation));
+                int operation = seatDO.getAction();
+                seatActionTextViewMap.get(seatId).setText(generateOperationText(operation));
             }
         }
     }
 
-    private void layoutRoomInfo(TexasHoldEmRoomInfoResponseDO texasHoldEmRoomInfoResponseDO) {
+    private void layoutRoomInfo(TexasHoldEmSceneInfoResponseDO texasHoldEmSceneInfoResponseDO) {
         Log.i("TexasHoldEmActivity", "layoutRoomInfo()");
-        smallBlindSeatId = texasHoldEmRoomInfoResponseDO.getSmallBlindSeatId();
-        bigBlindSeatId = texasHoldEmRoomInfoResponseDO.getBigBlindSeatId();
-        currentOperationSeatId = texasHoldEmRoomInfoResponseDO.getCurrentOperationSeatId();
-        roomStatus = texasHoldEmRoomInfoResponseDO.getRoomStatus();
+        smallBlindSeatId = texasHoldEmSceneInfoResponseDO.getSmallBlindSeatId();
+        bigBlindSeatId = texasHoldEmSceneInfoResponseDO.getBigBlindSeatId();
+        currentOperationSeatId = texasHoldEmSceneInfoResponseDO.getCurrentOperationSeatId();
+        sceneStatus = texasHoldEmSceneInfoResponseDO.getSceneStatus();
 
         TextView roomBetTextView = findViewById(R.id.activityTexasHoldEm_roomGameBetTextView);
-        if(roomStatus == ROOM_STATUS_WAITING) {
+        if(sceneStatus == ROOM_STATUS_WAITING) {
             roomBetTextView.setText("");
         } else {
-            roomBetTextView.setText("押注: " + texasHoldEmRoomInfoResponseDO.getRoomBet());
+            roomBetTextView.setText("押注: " + texasHoldEmSceneInfoResponseDO.getRoomBet());
         }
 
         publicCardList.clear();
-        publicCardList.addAll(texasHoldEmRoomInfoResponseDO.getPublicCardList());
+        publicCardList.addAll(texasHoldEmSceneInfoResponseDO.getPublicCardList());
         layoutPublicCardList();
 
         seatIdSeatMap.clear();
-        seatIdSeatMap.putAll(texasHoldEmRoomInfoResponseDO.getSeatIdSeatMap());
+        seatIdSeatMap.putAll(texasHoldEmSceneInfoResponseDO.getSeatIdSeatMap());
         for(int seatId = 0; seatId < 12; seatId ++) {
             layoutSeatInfo(seatId, seatIdSeatMap.get(seatId));
         }
@@ -664,23 +666,26 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void displayWinPotBet(List<TexasHoldEmWinPotBetResponseDO> winPotBetResponseDOList, int index) {
-        if(index >= winPotBetResponseDOList.size()) {
-            return;
+    private void displayWinPotBet(List<TexasHoldEmWinPotBetResponseDO> winPotBetResponseDOList) {
+        HashMap<Integer, Long> seatIdWinBetMap = new HashMap<>();
+        for(TexasHoldEmWinPotBetResponseDO responseDO: winPotBetResponseDOList) {
+            if(responseDO.getWinnerSeatIdList().size() > 0) {
+                long winPotBet = responseDO.getWinBet() / responseDO.getWinnerSeatIdList().size();
+                for(Integer seatId: responseDO.getWinnerSeatIdList()) {
+                    Long winBet = seatIdWinBetMap.get(seatId);
+                    if(winBet == null) {
+                        winBet = 0L;
+                    }
+                    winBet = winBet + winPotBet;
+                    seatIdWinBetMap.put(seatId, winBet);
+                }
+            }
         }
-        TexasHoldEmWinPotBetResponseDO winPotBetResponseDO = winPotBetResponseDOList.get(index);
-        for(Integer seatId: winPotBetResponseDO.getWinnerSeatIdList()) {
-            SeatDO seatDO = seatIdSeatMap.get(seatId);
-            seatDO.setMoney(seatDO.getMoney() + winPotBetResponseDO.getWinBet());
+
+        for(Integer seatId: seatIdWinBetMap.keySet()) {
             seatLayoutMap.get(seatId).setBackgroundResource(R.drawable.winner_seat_bg);
-            seatMoneyTextViewMap.get(seatId).setText("籌碼: " + seatDO.getMoney());
-            seatBetMoneyTextViewMap.get(seatId).setText("+ " + winPotBetResponseDO.getWinBet());
+            seatBetMoneyTextViewMap.get(seatId).setText("+ " + seatIdWinBetMap.get(seatId));
         }
-        int nextIndex = index + 1;
-        if(nextIndex >= winPotBetResponseDOList.size()) {
-            return;
-        }
-        new Handler().postDelayed(() -> displayWinPotBet(winPotBetResponseDOList, nextIndex), 1000);
     }
 
     private void layoutAllSeatCard() {
@@ -707,7 +712,7 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
 
 
 
-    private void startOperation(TexasHoldEmStartOperationResponseDO startOperationResponseDO) {
+    private void startAction(TexasHoldEmStartOperationResponseDO startOperationResponseDO) {
         Log.i("TexasHoldEmActivity", "startOperation(): startOperationResponseDO = " + new Gson().toJson(startOperationResponseDO));
         this.currentOperationSeatId = startOperationResponseDO.getSeatId();
         seatProgressLayoutMap.get(currentOperationSeatId).setVisibility(View.VISIBLE);
@@ -745,24 +750,26 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    private void layoutWaitSeatOperation(TexasHoldEmWaitOperationResponseDO waitOperationResponseDO) {
+    private void layoutWaitSeatAction(TexasHoldEmWaitOperationResponseDO waitOperationResponseDO) {
         long lastOperationTime = waitOperationResponseDO.getLastOperationTime();
         TextView operationSecondTextView = seatOperationSecondTextViewMap.get(waitOperationResponseDO.getSeatId());
         operationSecondTextView.setText(String.valueOf(lastOperationTime / 1000));
     }
 
-    private void layoutSeatOperation(TexasHoldEmSeatOperationResponseDO seatOperationResponseDO) {
+    private void layoutSeatAction(TexasHoldEmSeatOperationResponseDO seatOperationResponseDO) {
         int operationSeatId = seatOperationResponseDO.getSeatId();
         seatProgressLayoutMap.get(operationSeatId).setVisibility(View.GONE);
-        seatOperationTextViewMap.get(operationSeatId).setText(generateOperationText(seatOperationResponseDO.getOperation()));
+        seatActionTextViewMap.get(operationSeatId).setText(generateOperationText(seatOperationResponseDO.getOperation()));
 
-        if(seatOperationResponseDO.getOperation() == OPERATION_CALL || seatOperationResponseDO.getOperation() == OPERATION_RAISE) {
+        if(seatOperationResponseDO.getOperation() == OPERATION_CALL ||
+                seatOperationResponseDO.getOperation() == OPERATION_RAISE ||
+                seatOperationResponseDO.getOperation() == OPERATION_ALL_IN) {
             seatMoneyTextViewMap.get(operationSeatId).setText("籌碼: " + seatOperationResponseDO.getMoney());
             seatBetMoneyTextViewMap.get(operationSeatId).setText("押注: " + seatOperationResponseDO.getBet());
         }
 
         TextView roomGameBetTextView = findViewById(R.id.activityTexasHoldEm_roomGameBetTextView);
-        roomGameBetTextView.setText("押注: " + seatOperationResponseDO.getRoomGameBet());
+        roomGameBetTextView.setText("押注: " + seatOperationResponseDO.getSceneGameBet());
     }
 
     private String generateRoomStatusText(int roomStatus) {
@@ -798,7 +805,7 @@ public class TexasHoldEmActivity extends AppCompatActivity implements View.OnCli
                 return "加注";
             case OPERATION_ALL_IN:
                 return "ALL IN";
-            case OPERATION_STAN_UP:
+            case OPERATION_STAND_UP:
                 return "站起";
         }
         return "";

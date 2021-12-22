@@ -1,20 +1,16 @@
 package com.shark.game.activity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.shark.game.R;
 import com.shark.game.manager.ChannelManager;
-import com.shark.game.service.EnterGameRoomServiceGrpc;
-import com.shark.game.service.EnterGameRoomServiceOuterClass;
 import com.shark.game.service.LoginServiceGrpc;
 import com.shark.game.service.LoginServiceOuterClass;
 import com.shark.game.util.StringUtil;
@@ -57,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("MainActivity", "onLoginButtonClick");
         EditText editText = findViewById(R.id.activityMain_nameEditText);
         String name = editText.getText().toString();
-        if(StringUtil.isEmpty(name)) {
+        if (StringUtil.isEmpty(name)) {
             Toast.makeText(this, "請輸入暱稱", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -73,14 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LoginServiceOuterClass.LoginResponse loginResponse =
                 loginServiceBlockingStub.start(loginRequest);
         String token = loginResponse.getToken();
-
-        EnterGameRoomServiceOuterClass.EnterGameRoomRequest enterGameRequest =
-                EnterGameRoomServiceOuterClass.EnterGameRoomRequest.newBuilder()
-                        .setToken(token).setRoomType(3).build();
-        EnterGameRoomServiceGrpc.EnterGameRoomServiceBlockingStub enterGameRoomServiceBlockingStub = EnterGameRoomServiceGrpc.newBlockingStub(channel);
-        enterGameRoomServiceBlockingStub.start(enterGameRequest);
-
-
         return token;
     }
 
